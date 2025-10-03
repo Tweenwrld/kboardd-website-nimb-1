@@ -85,8 +85,8 @@ public/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Tweenwrld/perfume-website.git
-cd perfume-website
+git clone https://github.com/your-username/nimbus-keyboards.git
+cd nimbus-keyboards
 ```
 
 2. Install dependencies:
@@ -117,11 +117,11 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
 ### Environment Variables
 
-Create a `.env` file with the following variables:
+Create a `.env.local` file with the following variables:
 
 ```env
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=your-stripe-publishable-key
-STRIPE_SECRET_KEY=your-secret-key
+PRISMIC_ACCESS_TOKEN=your-token
+PRISMIC_API_ENDPOINT=your-endpoint
 ```
 
 ### Prismic Setup
