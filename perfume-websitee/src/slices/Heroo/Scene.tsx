@@ -67,7 +67,7 @@ function CameraController() {
       window.addEventListener("mousemove", handleMouseMove);
       return () => window.removeEventListener("mousemove", handleMouseMove);
     }
-  }, [size]);
+  }, [size, prefersReducedMotion]);
 
   return null;
 }
