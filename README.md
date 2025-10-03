@@ -111,7 +111,7 @@ npm run dev
 yarn dev
 ```
 
-Visit [http://localhost:3000](http://localhost:3000) to view the application.
+Visit [https://perfume-website-rho-self.vercel.app/](https://perfume-website-rho-self.vercel.app/) to view the application.
 
 ## 🔧 Configuration
 
