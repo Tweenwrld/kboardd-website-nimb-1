@@ -45,6 +45,9 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
       audioRefs.current[track] = audio;
     });
 
+    // Store refs in a variable for cleanup
+    const currentRefs = { ...audioRefs.current };
+
     // Intersection Observer setup for section detection
     const observer = new IntersectionObserver(
       (entries) => {
@@ -61,13 +64,13 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
 
             if (newTrack !== currentTrack) {
               // Fade out current track
-              const fadeOut = audioRefs.current[currentTrack];
+              const fadeOut = currentRefs[currentTrack];
               if (fadeOut) {
                 fadeAudio(fadeOut, 'out');
               }
 
               // Fade in new track
-              const fadeIn = audioRefs.current[newTrack];
+              const fadeIn = currentRefs[newTrack];
               if (fadeIn) {
                 fadeAudio(fadeIn, 'in');
               }
@@ -88,7 +91,7 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
     return () => {
       // Cleanup
       observer.disconnect();
-      Object.values(audioRefs.current).forEach((audio) => {
+      Object.values(currentRefs).forEach((audio) => {
         if (audio) {
           audio.pause();
           audio.src = '';
@@ -127,7 +130,8 @@ export function AudioProvider({ children }: { children: React.ReactNode }) {
   };
 
   const togglePlay = () => {
-    Object.entries(audioRefs.current).forEach(([track, audio]) => {
+    const currentRefs = audioRefs.current;
+    Object.entries(currentRefs).forEach(([track, audio]) => {
       if (!audio) return;
 
       if (isPlaying) {
